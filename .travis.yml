@@ -1,16 +1,20 @@
 sudo: required
 language: node_js
 node_js:
-  - "0.12"
-
+- '0.12'
 cache:
   directories:
-    - ~/.meteor
-    - node_modules
-    - webapp/node_modules
-
+  - "~/.meteor"
+  - node_modules
+  - webapp/node_modules
 install:
-  - "curl https://install.meteor.com | /bin/sh"
-  - "meteor update"
+- curl https://install.meteor.com | /bin/sh
+- meteor update
 script:
-  - "meteor --test --release velocity:METEOR@1.1.0.3_1"
+- meteor --test --release velocity:METEOR@1.1.0.3_1
+deploy:
+  provider: heroku
+  buildpack: https://github.com/jordansissel/heroku-buildpack-meteor.git
+  app: dinf-todos
+  api_key:
+    secure: XwNtMVDKlIl28XSpbUa/2IlDgQg09KJcSxdOqO2VONbusFuaifkJEBiAytKCAafYLgM39NnHFUKGJdh5ColHGEW9dAyBinySL+0kzTqVWYSxWJtu06rLgOcClHa9UMpxVXKDCftxLAsKwp3AFSqjphFQM+9nlghoSTB2dzhqXLtT7qLbxy0bmNlo4ZGhMIR/V7HefXVNoC/9KQspfF1yfhxb5W7z+iG2Ofezmeh0drBIHzTnzO38+Afo1aOoNz5ye3u/+/F6y1+P2VlYTbjQPBqY0FFLutnQG/uGsI1e9VIdiDju8rR7e27uZbxLBMMHwb94/+NSUI+K1zj0ikGzMwD/UkwCMnZsCkEKA9y2eF06kTZMyhnno5KUoNTU4ClgEOCAQkzisw6zXHSwVDfg23g6ff9agBUWM5+CkQefuLcH9jfTpnxYLdRwqWTadCvuYoJJGbYW2CE9/kuX1ANlnaRi1zHfiKvd72Yen7hl7l3D0QDQVIVqCX93nKZ0Vtk3Isp6ivdwQPPAKFHEiQ5LWWaEjofqUucrjGFkEnhpWGV18w7Zp50oM5s3FzgEWDJjbZBNj8VMY6d94kfLJVgH5Klvt32ABckOvbpSgR+IyuqTAqzT25R63Cx4jk2tDr3eoHvWNHHUS82KVAl3AtWvAOo3cTPY053SjuUnWW5W1sw=
